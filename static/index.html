@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreshCart AI — Grocery Sales Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">🛒</div>
+        <div>
+          <div class="brand-name">FreshCart AI</div>
+          <div class="brand-subtitle">Smart grocery shopping assistant</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="online-dot"></span><span>AI Assistant Online</span>
+        <button id="newChatBtn" class="ghost-btn">＋ New chat</button>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="chat-panel card">
+        <div class="panel-header">
+          <div>
+            <h1>How can I help with your groceries?</h1>
+            <p>Search products, build your cart, apply discounts and complete checkout through chat.</p>
+          </div>
+          <div class="conversation-id" title="Conversation ID">#<span id="convIdShort"></span></div>
+        </div>
+
+        <div id="chatMessages" class="messages"></div>
+
+        <div class="quick-actions">
+          <button data-prompt="Show me available rice and flour">🍚 Rice & flour</button>
+          <button data-prompt="What discounts are available?">🏷️ View discounts</button>
+          <button data-prompt="I need groceries for a family of four">🛍️ Build a cart</button>
+        </div>
+
+        <form id="chatForm" class="composer">
+          <textarea id="messageInput" rows="1" placeholder="Ask for groceries, prices, discounts, or build an order…" autocomplete="off"></textarea>
+          <button id="sendBtn" class="send-btn" type="submit" aria-label="Send message">➤</button>
+        </form>
+        <div class="composer-hint">AI responses are generated from the store catalog and available tools.</div>
+      </section>
+
+      <aside class="order-panel">
+        <div class="card summary-card">
+          <div class="summary-heading">
+            <div>
+              <div class="eyebrow">LIVE ORDER</div>
+              <h2>Your cart</h2>
+            </div>
+            <span id="orderStatus" class="status-pill collecting">Collecting</span>
+          </div>
+          <div id="productList" class="product-list empty-state">
+            <div class="empty-icon">🧺</div>
+            <strong>Your cart is empty</strong>
+            <span>Tell the assistant what you need.</span>
+          </div>
+          <div class="totals">
+            <div><span>Subtotal</span><strong id="subtotal">₹0.00</strong></div>
+            <div><span>Discount</span><strong id="discount">− ₹0.00</strong></div>
+            <div><span>Delivery</span><strong id="delivery">₹0.00</strong></div>
+            <div><span>Tax</span><strong id="tax">₹0.00</strong></div>
+            <div class="grand-total"><span>Total</span><strong id="total">₹0.00</strong></div>
+          </div>
+          <div id="paymentBox" class="payment-box hidden">
+            <div><span class="payment-icon">💳</span><div><strong>Payment ready</strong><small>Use the secure payment link below.</small></div></div>
+            <a id="paymentLink" href="#" target="_blank" rel="noopener">Pay now ↗</a>
+          </div>
+        </div>
+
+        <div class="card customer-card">
+          <div class="eyebrow">CUSTOMER</div>
+          <h2>Customer details</h2>
+          <div class="customer-row"><span>👤</span><div><small>Name</small><strong id="customerName">Not provided</strong></div></div>
+          <div class="customer-row"><span>✉️</span><div><small>Email</small><strong id="customerEmail">Not provided</strong></div></div>
+          <div class="customer-row"><span>📱</span><div><small>Phone</small><strong id="customerPhone">Not provided</strong></div></div>
+        </div>
+      </aside>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
